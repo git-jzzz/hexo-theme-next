@@ -57,6 +57,7 @@
           isfetched = true;
           $('.popup').detach().appendTo('.header-inner');
           var datas = isXml ? $("entry", res).map(function() {
+		  //获取search.xml中所有文章    alert(1);
             return {
               title: $("title", this).text(),
               content: $("content",this).text(),
@@ -66,6 +67,7 @@
           var input = document.getElementById(search_id);
           var resultContent = document.getElementById(content_id);
           var inputEventFunction = function() {
+		 
             var searchText = input.value.trim().toLowerCase();
             var keywords = searchText.split(/[\s\-]+/);
             if (keywords.length > 1) {
@@ -167,6 +169,7 @@
                     };
                   }
 
+
                   var slicesOfTitle = [];
                   if (indexOfTitle.length != 0) {
                     slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
@@ -229,11 +232,10 @@
                   var resultItem = '';
 
                   if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                    resultItem += "<li><a href='"+articleUrl+"'  class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
                   } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
+                    resultItem += "<li><a href='"+articleUrl+"'  class='search-result-title'>" + title + "</a>";
+                  }				
                   slicesOfContent.forEach(function (slice) {
                     resultItem += "<a href='" + articleUrl + "'>" +
                       "<p class=\"search-result\">" + highlightKeyword(content, slice) +
@@ -272,10 +274,11 @@
               resultContent.innerHTML = searchResultList;
             }
           }
-
           if ('auto' === '{{ theme.local_search.trigger }}') {
+			//添加搜索框
             input.addEventListener('input', inputEventFunction);
           } else {
+	
             $('.search-icon').click(inputEventFunction);
             input.addEventListener('keypress', function (event) {
               if (event.keyCode === 13) {
@@ -287,7 +290,7 @@
           // remove loading animation
           $(".local-search-pop-overlay").remove();
           $('body').css('overflow', '');
-
+			
           proceedsearch();
         }
       });
@@ -308,11 +311,14 @@
       e.stopPropagation();
     });
     $(document).on('keyup', function (event) {
+	//搜索框事件 输入则 查询  条件为  输入框.search-popup被打开
       var shouldDismissSearchPopup = event.which === 27 &&
         $('.search-popup').is(':visible');
       if (shouldDismissSearchPopup) {
         onPopupClose();
       }
+	
+	  	
     });
   </script>
 {% endif %}
