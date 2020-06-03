@@ -255,13 +255,14 @@
               {% endif %}
             </div>
           {% endif %}
-
+<!--
+注释详细页面中description
           {% if post.description and (not theme.excerpt_description or not is_index) %}
               <div class="post-description">
                   {{ post.description }}
               </div>
           {% endif %}
-
+-->
         </div>
       </header>
     {% endif %}
@@ -292,7 +293,7 @@
 
       {% if is_index %}
         {% if post.description and theme.excerpt_description %}
-         <!--  {{ post.description }}-->
+           {{ post.description }}
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="{{ url_for(post.path) }}">
