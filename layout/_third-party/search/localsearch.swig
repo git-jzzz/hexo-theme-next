@@ -85,6 +85,8 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
+				
+				
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -230,7 +232,7 @@
                   }
 
                   var resultItem = '';
-
+				
                   if (slicesOfTitle.length != 0) {
                     resultItem += "<li><a href='"+articleUrl+"'  class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
                   } else {

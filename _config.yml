@@ -35,7 +35,7 @@ favicon:
   #ms_browserconfig: /images/browserconfig.xml
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "jzzs"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -75,7 +75,7 @@ footer:
 canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
-seo: false
+seo: true
 
 # If true, will add site-subtitle to index page, added in main hexo config.
 # subtitle: Subtitle
@@ -165,7 +165,7 @@ toc:
   number: true
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
-  wrap: true
+  wrap: false
     # 如果为true，将显示帖子中的所有TOC级别，而不是其中的激活部分.
   expand_all: true
   # 生成的TOC的最大深度. 你可以在一个帖子中通过Front Matter中的`toc_max_depth`设置它.
@@ -199,7 +199,7 @@ sidebar:
   b2t: false
 
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
@@ -301,7 +301,7 @@ font:
   enable: false
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default).
-  host:
+  host: //fonts.lug.ustc.edu.cn # fonts.lug.ustc.edu.cn是中科大的源。
 
   # Font options:
   # `external: true` will load this font family from `host` above.
@@ -578,7 +578,7 @@ busuanzi_count:
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
-baidu_push: false
+baidu_push: true
 
 # Google Calendar
 # Share your recent schedule to others via calendar page
@@ -615,7 +615,7 @@ local_search:
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
   # show top n results per article, show all results by setting to -1
-  top_n_per_article: -1
+  top_n_per_article: 1
 
 
 # ---------------------------------------------------------------

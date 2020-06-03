@@ -116,7 +116,8 @@ body {
             return false;
         };
         function clicktoLoading() {
-            $("#iframe-wrap,#iframe").css({"display":"block","z-index":"9999"});
+		
+            $("#iframe-wrap,#iframe").css({"display":"block","z-index":"9999","position":"fixed"});
 			$(".header").css({"display":"none"});
         }
         function clicktoLoadingHide() {
@@ -467,7 +468,7 @@ function sidebar_show(){
 	 new_element.setAttribute("color","196,226,216");
 	  new_element.setAttribute("opacity","1");
 	   new_element.setAttribute("zIndex","-1");
-	    new_element.setAttribute("count","399");
+	    new_element.setAttribute("count","199");
     new_element.setAttribute("src","//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js");
     document.body.appendChild(new_element);
 		}

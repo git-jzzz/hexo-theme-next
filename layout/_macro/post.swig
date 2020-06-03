@@ -292,7 +292,7 @@
 
       {% if is_index %}
         {% if post.description and theme.excerpt_description %}
-          {{ post.description }}
+         <!--  {{ post.description }}-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="{{ url_for(post.path) }}">
