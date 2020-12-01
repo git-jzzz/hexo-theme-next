@@ -15,6 +15,8 @@
   {% include '_partials/head.swig' %}
   <title>{% block title %}{% endblock %}</title>
   {% include '_third-party/analytics/index.swig' %}
+  
+  
 
 
    <!--开启列表滚动条-->
@@ -38,14 +40,251 @@ body {
  }
 
 
+ #catch-the-cat {
+	display:none;
+ position:fixed;
+ top:300px;
+            width: 100%;
+            
+			z-index:999;
+        }
+		
+		
+		#cat {
+		 position:fixed;
+		 top:570px;
+		 left:200px;
+		 z-index:999;
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+}
 
+#cat:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+#cat:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+
+ .back-to-top.back-to-top-on {
+            bottom: unset;
+            top: calc(100vh - 900px - 200px);
+        }
+
+        .back-to-top.back-to-top-on {
+            bottom: 19px;
+        }
+        @media (max-width: 991px) {
+            .back-to-top {
+                right: 20px;
+                opacity: 0.8;
+            }
+        }
+        .reading-progress-bar {
+            background: #37c6c0;
+            display: block;
+            height: 2px;
+            left: 0;
+            position: fixed;
+            width: 0;
+            z-index: 1500;
+            top: 0;
+        }
+
+
+        .back-to-top {
+            font-size: 12px;
+            text-align: center;
+            transition-delay: 0s;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in-out;
+        }
+        .back-to-top {
+            background: #222;
+            bottom: -100px;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            right: 30px;
+            opacity: 1;
+            padding: 0 6px;
+            position: fixed;
+            transition-property: bottom;
+            z-index: 1300;
+            width: 24px;
+        }
+        .back-to-top span {
+            display: none;
+        }
+        .back-to-top:hover {
+            color: #87daff;
+        }
+
+
+        .back-to-top {
+            right: 60px;
+            width: 70px;
+            height: 900px;
+            top: -900px;
+            bottom: unset;
+            transition: all 0.5s ease-in-out;
+            background: url("/images/scroll.png");
+        }
+        .back-to-top > i {
+            display: none;
+        }
+		
+		
+		   :-webkit-scrollbar {
+            width: 0.25rem;
+            height: 0.25rem;
+            background-image: linear-gradient(135deg, #1DE9B6 0%, rgba(8, 196, 219, 0.5) 72%, rgba(0, 182, 234, 0.3) 100%);
+            -webkit-appearance:button;
+        }
+        :-webkit-scrollbar-track {
+            border-radius: 0;
+        }
+        :-webkit-scrollbar-thumb {
+            border-radius: 0;
+            background-image: linear-gradient(135deg, #1DE9B6 0%, #08c4db 72%, #057494 100%);
+            transition: all .2s;
+            border-radius: 0.25rem;
+
+        }
+        :-webkit-scrollbar-thumb:hover {
+            background-color: rgba(95, 95, 95, 0.7);
+        }
 </style>
+
+
+<style type="text/css">
+  /* 超链接样式 */
+    .post-body a {
+        padding: 0 0.25em;
+        font-weight: 500;
+        text-decoration: underline;
+        -webkit-transition: color 0.2s;
+        transition: color 0.2s;
+		
+		position: relative;
+        display: inline-block;
+        outline: none;
+        color: #404d5b;
+        vertical-align: bottom;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .post-body a:hover {
+        color: #d04c3f;
+    }
+
+    .post-body a:before,
+    .post-body a:after {
+        position: absolute;
+        top: 0;
+        font-weight: 100;
+        font-size: 150%;
+        line-height: 1;
+        opacity: 0;
+        -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+        transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .post-body a:before {
+        left: -0.1em;
+        content: '[';
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+
+    .post-body a:after {
+        right: -0.1em;
+        content: ']';
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+
+
+   
+
+    .post-body a:hover:before,
+    .post-body a:hover:after {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    post-body a:before,
+    post-body a:after {
+        pointer-events: none;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+    }
+</style>
+
 
 <script src="/js/src/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="/js/src/jquery.pjax.js" type="text/javascript"></script>
 
 </head>
 
+<script>
+//弹窗滚动效果
+$(function(){
+ var THRESHOLD = 50;
+    var backToTop = document.querySelector('.back-to-top');
+    var readingProgressBar = document.querySelector('.reading-progress-bar');
+    // For init back to top in sidebar if page was scrolled after page refresh.
+    window.addEventListener('scroll', () => {
+      if (backToTop || readingProgressBar) {
+        var docHeight = document.querySelector('.container').offsetHeight;
+        var winHeight = window.innerHeight;
+        var contentVisibilityHeight = docHeight > winHeight ? docHeight - winHeight : document.body.scrollHeight - winHeight;
+        var scrollPercent = Math.min(100 * window.scrollY / contentVisibilityHeight, 100);
+        if (backToTop) {
+          backToTop.classList.toggle('back-to-top-on', window.scrollY > THRESHOLD);
+          backToTop.querySelector('span').innerText = Math.round(scrollPercent) + '%';
+        }
+        if (readingProgressBar) {
+          readingProgressBar.style.width = scrollPercent.toFixed(2) + '%';
+        }
+      }
+    });
+
+})
+  
+  
+   
+</script>
+
+<!--拦截yx大作战
+<script type="text/javascript">
+	$(function(){
+		$("#cat").click(function(){
+			if($(this).html()=="拦截yx大作战"){
+			$("#cat").html("停止作战,投降ya！");
+			$("#catch-the-cat").css("display","block");
+			}else{
+			$("#cat").html("拦截yx大作战");
+			$("#catch-the-cat").css("display","none");
+			}
+		})
+	})
+</script>
+-->
 <!--loading动画-->
  <script src="https://hm.baidu.com/hm.js?382f81c966395258f239157654081890"></script>
 
@@ -121,10 +360,10 @@ body {
 			$(".header").css({"display":"none"});
         }
         function clicktoLoadingHide() {
-		setTimeout(function(){
+		//setTimeout(function(){
 			$("#iframe-wrap,#iframe").css({"display":"none"});	
 			$(".header").css({"display":"block"});
-		},500);
+	//	},100);
             
         }
     </script>
@@ -183,7 +422,7 @@ onPopupClose();//关闭搜索框
 });
 
 
-$(document).on('click', 'a[target!=_blank]', function () {
+$(document).on('click', 'a[target!=_blank][rel!=group]', function () {
 
     //$("#pjax-container").fadeOut();
     //NProgress.start();
@@ -216,6 +455,8 @@ $(document).on('click', 'a[target!=_blank]', function () {
 				//内容不显示bug
 				opacity_js();
 
+				//图片点击失效
+				wrapImageWithFancyBox();
 				//侧边栏bug
 				sidebar_show();
 
@@ -296,6 +537,41 @@ function opacity_js() {
 
 }
 
+//图片点击失效
+function wrapImageWithFancyBox() {
+  $('.content img')
+    .not('[hidden]')
+    .not('.group-picture img, .post-gallery img')
+    .each(function () {
+      var $image = $(this);
+      var imageTitle = $image.attr('title');
+      var $imageWrapLink = $image.parent('a');
+ 
+      if ($imageWrapLink.size() < 1) {
+        var imageLink = ($image.attr('data-original')) ? this.getAttribute('data-original') : this.getAttribute('src');
+        $imageWrapLink = $image.wrap('<a href="' + imageLink + '"></a>').parent('a');
+      }
+ 
+      $imageWrapLink.addClass('fancybox fancybox.image');
+      $imageWrapLink.attr('rel', 'group');
+ 
+     // if (imageTitle) {
+       // $imageWrapLink.append('<p class="image-caption">' + imageTitle + '</p>');
+ 
+        //make sure img title tag will show correctly in fancybox
+     //   $imageWrapLink.attr('title', imageTitle);
+     // }
+    });
+ 
+  $('.fancybox').fancybox({
+    helpers: {
+      overlay: {
+        locked: false
+      }
+    }
+  });
+}
+
 //侧边栏
 function sidebar_show(){
 
@@ -358,6 +634,15 @@ function sidebar_show(){
 
 <body id="by" itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
 
+<div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span></span>
+</div>
+<div class="reading-progress-bar"></div>
+
+<!--拦截yx大作战
+<button id="cat">拦截yx大作战</button>
+-->
 
   {% set container_class = "container " %}
      <div class="headband">
@@ -376,6 +661,8 @@ function sidebar_show(){
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"> {%- include '_partials/header.swig' %} </div>
     </header>
+
+	
 <div id="iframe-wrap">
     <iframe id="iframe" src="https://www.17sucai.com/preview/602230/2019-07-15/loading/index.html" frameborder="0" width="100%" height="97px"></iframe>
 </div>
@@ -510,7 +797,7 @@ color="203,199,203" opacity='1' zIndex="-1" count="399" src="//cdn.bootcss.com/c
             vOffset: 10  //垂直偏移
         },
         mobile: {
-            show: true,  //在移动端显示
+            show: false,  //在移动端显示
             scale: 0.5   //移动设备上的缩放
         },
         react: {
@@ -552,7 +839,23 @@ color="203,199,203" opacity='1' zIndex="-1" count="399" src="//cdn.bootcss.com/c
 
 </body>
  <!--人体时钟背景透明-->
-  <script type="text/javascript" charset="Shift_JIS" src="/js/src/clock/honehone_clock_tr.js"></script>
+ <!--<script type="text/javascript" charset="Shift_JIS" src="/js/src/clock/honehone_clock_tr.js"></script>-->
 
+<!--拦截yx大作战-->
+<!--<script src="/js/cat/phaser.min.js"></script>
+<script src="/js/cat/catch-the-cat.js"></script>
+<div id="catch-the-cat"></div>
 
+<script>
+    window.game = new CatchTheCatGame({
+        w: 11,
+        h: 11,
+        r: 10,
+        backgroundColor: 0xffffff,
+        parent: 'catch-the-cat',
+        statusBarAlign: 'center',
+        credit: '拦住小yx,别让她回jzz的家！'
+    });
+</script>
+-->
 </html>

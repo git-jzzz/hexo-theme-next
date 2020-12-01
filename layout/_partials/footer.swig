@@ -26,13 +26,13 @@
 
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  本站访客数:<span id="busuanzi_value_site_uv"></span>
+  本站可怜的访客数:<span id="busuanzi_value_site_uv"></span>
 </span>
 </div>
 <br/>
 <!-- 网站运行时间的设置 -->
 <span id="timeDate">载入天数...</span>
-<span id="times">载入时分秒...</span>  Sometimes your whole life boils down to one insame move.
+<span id="times">载入时分秒...</span><br/>  don't try so hard, the best things come when you least expect them to.
 <script>
     var now = new Date();
     function createtime() {

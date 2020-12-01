@@ -93,6 +93,10 @@ NexT.utils = NexT.$u = {
       }
     });
   },
+  
+
+  
+  
 
   registerBackToTop: function () {
     var THRESHOLD = 50;
