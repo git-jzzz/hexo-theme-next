@@ -270,15 +270,15 @@ $(function(){
    
 </script>
 
-<!--拦截yx大作战
+<!--拦截a大作战
 <script type="text/javascript">
 	$(function(){
 		$("#cat").click(function(){
-			if($(this).html()=="拦截yx大作战"){
+			if($(this).html()=="拦截a大作战"){
 			$("#cat").html("停止作战,投降ya！");
 			$("#catch-the-cat").css("display","block");
 			}else{
-			$("#cat").html("拦截yx大作战");
+			$("#cat").html("拦截a大作战");
 			$("#catch-the-cat").css("display","none");
 			}
 		})
@@ -640,8 +640,8 @@ function sidebar_show(){
 </div>
 <div class="reading-progress-bar"></div>
 
-<!--拦截yx大作战
-<button id="cat">拦截yx大作战</button>
+<!--拦截a大作战
+<button id="cat">拦截a大作战</button>
 -->
 
   {% set container_class = "container " %}
@@ -769,10 +769,10 @@ color="203,199,203" opacity='1' zIndex="-1" count="399" src="//cdn.bootcss.com/c
    <!--浏览器搞笑标题-->
 <script type="text/javascript" src="/js/src/FunnyTitle.js"></script>
 
-
+ <!--点击爆炸特效
    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-<script type="text/javascript" src="/js/src/fireworks.js"></script>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>-->
 
 
 
@@ -807,8 +807,8 @@ color="203,199,203" opacity='1' zIndex="-1" count="399" src="//cdn.bootcss.com/c
     });
 </script>
 
-<!--单击显示文字-->
-<script type="text/javascript" src="/js/src/click_show_text.js"></script>
+<!--单击显示文字
+<script type="text/javascript" src="/js/src/click_show_text.js"></script>-->
 
 
 <!--鼠标跟随特效-->
@@ -841,7 +841,7 @@ color="203,199,203" opacity='1' zIndex="-1" count="399" src="//cdn.bootcss.com/c
  <!--人体时钟背景透明-->
  <!--<script type="text/javascript" charset="Shift_JIS" src="/js/src/clock/honehone_clock_tr.js"></script>-->
 
-<!--拦截yx大作战-->
+<!--拦截cat大作战-->
 <!--<script src="/js/cat/phaser.min.js"></script>
 <script src="/js/cat/catch-the-cat.js"></script>
 <div id="catch-the-cat"></div>
@@ -854,7 +854,7 @@ color="203,199,203" opacity='1' zIndex="-1" count="399" src="//cdn.bootcss.com/c
         backgroundColor: 0xffffff,
         parent: 'catch-the-cat',
         statusBarAlign: 'center',
-        credit: '拦住小yx,别让她回jzz的家！'
+        credit: '拦住a,别让a回jzz的家！'
     });
 </script>
 -->

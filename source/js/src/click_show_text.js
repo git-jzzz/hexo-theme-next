@@ -2,7 +2,7 @@ var a_idx = 0;
 jQuery(document).ready(function($) {
     $("body").click(function(e) {
         var a = new Array
-        ("程序猿", "Java", "Mysql", "JavaScript","前后端分离","layui","vue","database","jz","love","yx","bb","么么", "SSM", "SpringBoot", "SpringCloud", "Linux","redis","WebSocket", "idea","WebStorm", "jz", "love", "yx");
+        ("程序猿", "Java", "Mysql", "JavaScript","前后端分离","layui","vue","database","么么", "SSM", "SpringBoot", "SpringCloud", "Linux","redis","WebSocket", "idea","Docker","Jekins");
         var $i = $("<span/>").text(a[a_idx]);
         a_idx = (a_idx + 1) % a.length;
         var x = e.pageX,
